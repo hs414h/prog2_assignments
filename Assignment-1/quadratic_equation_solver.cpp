@@ -7,8 +7,10 @@ Name: Quadratic Equation Solver
 
 #include <thread>
 #include <chrono>
+#include <iomanip>
 
 #include <iostream>
+#include <sstream>
 #include <cmath>
 #include <array>
 #include <tuple>
@@ -33,7 +35,6 @@ void header() {
 	std::cout << "\n\n";
 }
 
-
 void progress_bar() {
 	int total = 20;
 	int blocks = 20;
@@ -52,6 +53,16 @@ void progress_bar() {
 		std::cout.flush();
 		std::this_thread::sleep_for(std::chrono::milliseconds(50));
 	}
+}
+
+std::string format_float(float val, int precision) {
+	if (val == 0.0 || val == 1.0) return "";
+
+	std::stringstream s;
+
+	s << std::fixed << std::setprecision(precision) << val;
+
+	return s.str();
 }
 
 
@@ -73,32 +84,26 @@ void display_solution(char s, float d, float img, float x1, float x2) {
 
 	switch (s) {
 		case 'R':
-			std::cout << "\t\t♦ D = " << d << ", so D > 0, and we have 2 solutions in R:" << std::endl;
-			std::cout << "\t\t   ┌───────────────────────────────┐" << std::endl;
-			std::cout << "\t\t      ★ x1 = " << x1 << std::endl;
-			std::cout << "\t\t      ★ x2 = " << x2 << std::endl;
-			std::cout << "\t\t   └───────────────────────────────┘" << std::endl;
-			std::cout << "\n\n";
+			std::cout << "\t\t♦ D = " << d << ", so D > 0, and we have 2 solutions in R:\n" << std::endl;
+			std::cout << "\t\t   ★ x1 = " << x1;
+			std::cout << "\t★ x2 = " << x2 << std::endl;
 			break;
+
 		case 'C':
-			std::cout << "\t\t♦ D = -" << d << ", so D < 0, and we have 2 solutions in C:" << std::endl;
-			std::cout << "\t\t   ┌───────────────────────────────────────┐" << std::endl;
-			std::cout << "\t\t      ★ x1 = " << x1 << " + " << img << "j" << std::endl;
-			std::cout << "\t\t      ★ x2 = " << x2 << " - " << img << "j" << std::endl;
-			std::cout << "\t\t   └───────────────────────────────────────┘" << std::endl;
-			std::cout << "\n\n";
+			std::cout << "\t\t♦ D = -" << d << ", so D < 0, and we have 2 solutions in C:\n" << std::endl;
+			std::cout << "\t\t   ★ x1 = " << format_float(x1, 3) << " +" << format_float(img, 3) << "j\t";
+			std::cout << "★ x2 = " << format_float(x2, 3) << " -" << format_float(img, 3) << "j" << std::endl;
 			break;
+
 		case 'S':
-			std::cout << "\t\t♦ D = " << d << ", so D = 0, and we have 1 solution in R. (x1 = x2):" << std::endl;
-			std::cout << "\t\t   ┌───────────────────────────────┐" << std::endl;
-			std::cout << "\t\t      ★ x1 = x2 = " << x1 << std::endl;
-			std::cout << "\t\t   └───────────────────────────────┘" << std::endl;
-			std::cout << "\n\n";
+			std::cout << "\t\t♦ D = " << d << ", so D = 0, and we have 1 solution in R. (x1 = x2):\n" << std::endl;
+			std::cout << "\t\t   ★ x1 = x2 = " << x1 << std::endl;
 			break;
 		
 		default:
 			break;
 	}
+	std::cout << "\n\n";
 }
 
 
@@ -115,7 +120,7 @@ void display_solution(char s, float d, float img, float x1, float x2) {
 */
 std::tuple<char, float, float, float, float> solve(float a, float b, float c) {
 	float d, x1, x2, img = 0;
-	char state = 'l';
+	char state;
 
 	d = ((b * b) - 4 * a * c);
 
@@ -170,7 +175,6 @@ std::array<float, 3> get_coefficients() {
 
 int main() {
 	char solve_another_equation = 'n';
-	
 
 	while(true) {
 		system("clear");
@@ -182,11 +186,17 @@ int main() {
 		
 		auto [a, b, c] = get_coefficients(); // decomposition of the array type
 
-		std::cout << "\n\t  → Eqation: (" << a << ")x^2 + (" << b << ")x + (" << c << ") = 0\n" << std::endl;
+		if ( a == 0.0 ) {
+			std::cout << "\n♦ a = 0, so no possible solutions can be found for this equation!" << std::endl;
+			std::cout << "♦ according to the general formula for solving quadratic equation mentioned above," << std::endl;
+			std::cout << "♦ division by zero is not possible.\n" << std::endl;
+		}
+		else {
+			std::cout << "\n\t  → Eqation: (" << a << ")x^2 + (" << b << ")x + (" << c << ") = 0\n" << std::endl;
 		
-		auto [s, d, img, x1, x2] = solve(a, b, c); // decomposition of the tuple type returned by the solve function
-
-		display_solution(s, d, img, x1, x2);
+			auto [s, d, img, x1, x2] = solve(a, b, c); // decomposition of the tuple type returned by the solve function
+			display_solution(s, d, img, x1, x2);
+		}
 
 		std::cout << "Solve another equation? (y/n): ";
 		std::cin >> solve_another_equation;
