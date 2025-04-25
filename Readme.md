@@ -5,3 +5,6 @@
 
 ### Assignment 1
 - quadratic equation solver
+
+### Assignment 4
+- arrays operations -- part 2
