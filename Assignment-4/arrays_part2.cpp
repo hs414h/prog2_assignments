@@ -1,6 +1,6 @@
 /*
  * Asignment 4 -- Arrays (part 2)
- * Author: Hesham Salama -- hs414h@outlook.com | hes8519@thi.de
+ * Author: Hesham Salama -- heshamsalama.com | hes8519@thi.de
  */
 
  #include <iostream>

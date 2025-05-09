@@ -1,5 +1,5 @@
 /* 
-Author: Hesham Salama - hes8519@thi.de
+Author: Hesham Salama - heshamsalama.com | hes8519@thi.de
 THI-AVE: Programming2 - Assignment0
 Name: Guess The Number
 */
