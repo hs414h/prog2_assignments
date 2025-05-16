@@ -1,5 +1,10 @@
 # Programming2 THI-AVE
 
+## Useful Links
+- [GDB Online debugger/compiler](https://www.onlinegdb.com/)
+- [C++ Shell](cpp.sh)
+
+
 ### Assignment 0
 - guess the number
 
@@ -13,3 +18,6 @@
 ### Assignment 5
 - prime factorisation
 - cpp.sh link [here](https://cpp.sh/?source=%2F*%0A+*+Asignment+5+--+Prime+Factorisation%0A+*+Author%3A+Hesham+Salama+--+heshamsalama.com+%7C+hes8519%40thi.de%0A+*%2F%0A%0A%23include+%3Ciostream%3E%0A%0Avoid+factor_prime(unsigned+long+long+n)%0A%7B%0A++unsigned+long+long+orig+%3D+n%3B%0A++%2F%2F+handle+2+first+(smallest+and+the+only+even+prime+number)%0A++while(n+%25+2+%3D%3D+0)%0A++%7B%0A++++std%3A%3Acout+%3C%3C+2+%3C%3C+%27+%27%3B%0A++++n+%2F%3D+2%3B%0A++%7D%0A%0A++%2F%2F+check+odd+primes+starting+from+3+(smallest+odd+prime)%0A++%2F%2F+the+loop+goes+through+till+sqrt(n)+because+if+n+has+a+factor+grater+than%0A++%2F%2F+sqrt(n)+then+it+must+also+has+a+corresponding+factor+less+than+sqrt(n)%0A++for(unsigned+long+long+i+%3D+3%3B+i*i+%3C%3D+n%3B+i%2B%3D2)%0A++%7B%0A++++while(n+%25+i+%3D%3D+0)%0A++++%7B%0A++++++std%3A%3Acout+%3C%3C+i+%3C%3C+%27+%27%3B%0A++++++n+%2F%3D+i%3B%0A++++%7D%0A++%7D%0A%0A++%2F%2F+this+means+that+the+left+n+must+be+a+prime+(not+any+more+divisible+by+another+number)%0A++if(n+%3E+2)%0A++%7B%0A++++if(n+%3D%3D+orig)%0A++++%7B%0A++++++std%3A%3Acout+%3C%3C+%22prime%22%3B%0A++++%7D%0A++++else%0A++++++std%3A%3Acout+%3C%3C+n%3B%0A++%7D%0A%0A++std%3A%3Acout+%3C%3C+std%3A%3Aendl%3B%0A%7D%0A%0Aint+main()%0A%7B%0A++unsigned+long+long+low%2C+high%3B%0A%0A++std%3A%3Acout+%3C%3C+%22Enter+the+low+bound+(%3E%3D1)%3A%5Ct%22%3B%0A++std%3A%3Acin+%3E%3E+low%3B%0A%0A++std%3A%3Acout+%3C%3C+%22Enter+the+high+bound+(%3C%3D)%3A%5Ct%22%3B%0A++std%3A%3Acin+%3E%3E+high%3B%0A%0A%0A++for(unsigned+long+long+i+%3D+low%3B+i+%3C%3D+high%3B+i%2B%2B)%0A++%7B%0A++++std%3A%3Acout+%3C%3C+i+%3C%3C+%22%3A+%22%3B%0A++++factor_prime(i)%3B%0A++%7D%0A++%0A++%2F%2F+if+we+use+signed+int+the+largest+prime+%0A++%2F%2F+that+can+fit+in+a+32bit+int+is+2%2C147%2C483%2C647%0A++%2F%2F+which+happens+to+be+also+a+prime.%0A++%2F%2F+we+can+check+this+using+our+factor_prime+function%0A++%2F%2F+it+supports+signed+integers%0A++%2F%2F+std%3A%3Acout+%3C%3C+%22Checking+the+number+2%2C147%2C483%2C647%3A+%5Cn%22%3B%0A++%2F%2F+factor_prime(2147483647)%3B%0A++%2F%2F+std%3A%3Acout+%3C%3C+%22Checking+the+number+9%2C223%2C372%2C036%2C854%2C775%2C783%3A+%5Cn%22%3B%0A++%2F%2F+factor_prime(9223372036854775783)%3B+%2F%2F+for+signed+64bit+int.%0A%0A++%2F%2F+for+unsigned+int+the+largest+fitting+number+would+be%0A++%2F%2F+4%2C294%2C967%2C295%2C+but+it+is+not+a+prime%2C+so+the+closest%0A++%2F%2F+number+that+is+the+largest+prime%0A++%2F%2F+and+fits+in+an+unsigned+32+bit+int+is%3A+4%2C294%2C967%2C291%0A++return+0%3B%0A%7D%0A)
+
+### Assignment 6
+- strping manipulation
